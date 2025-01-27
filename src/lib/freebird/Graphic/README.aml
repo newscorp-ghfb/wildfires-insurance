@@ -1,0 +1,19 @@
+[+body]
+  subhed: Embedding graphics
+
+  The Freebird Graphic template is used to include HTML fragments, like ai2html markup or custom files, into the page.
+
+  To use, place your fragment files in $lib/graphics (the default for ai2html) and reference them by their filename with the `media` prop. 
+
+  As a Wrapper-based template, it supports all standard <a target="_blank" href="../shared/Wrapper/">Wrapper props</a> for metadata, width and margins.
+
+  {.graphic}
+    media: example.html
+
+    # Wrapper props
+    hed: My Graphic
+    caption: A bird.
+    credit: The New York Times
+  {}
+
+[]

@@ -1,0 +1,67 @@
+[+body]
+  subhed: Slides
+
+  The Slides component, combined with our responsive viewport props, allow us to art direct visual, slide-based stories by platform. For example, the same content on mobile can be a <a target="_blank" href="./Slideshow">Slideshow</a> and on desktop can be a <a target="_blank" href="./ScrollingSlides">ScrollingSlides</a>.
+
+  This works because several Freebird components conform to the same "step story" schema. Simply put, that means these templates expect to find a 'items' array, and that each item will have a visual in the form of a 'media' prop and optionally some copy via the 'text' prop. The templates include: <a target="_blank" href="./ScrollingSlides">ScrollingSlides</a>, <a target="_blank" href="./Slideshow">Slideshow</a>,  <a target="_blank" href="./TapStory">TapStory</a> and  <a target="_blank" href="./Stack">Stack</a>. Each of these templates solves the common visual narrative pattern of media plus text in a slightly different way, but each help our readers 'step' through a story.
+
+  The key to this component is the 'slidesType' prop, which specifies which Freebird template ot use. By default, its value is 'stack'. But it can be any of: 'stack', 'scrollingslides', 'slideshow' or 'tapstory'. The value in this Slides template is that you can specify additional 'slidesType' by viewport, like 'slidesType-desktop' or 'slideTypes-400px', giving us lots of art direction possibilities. 
+
+  As a Wrapper-based template, it supports all standard <a target="_blank" href="../shared/Wrapper/">Wrapper props</a> for metadata, width and margins.
+
+  Additionally, each individual item supports most <a target="_blank" href="https://github.com/newsdev/birdkit/tree/main/packages/template-freebird/src/lib/shared/Wrapper#google-doc-props-props">Wrapper props</a> and most <a href="https://github.com/newsdev/birdkit/tree/main/packages/template-freebird/src/lib/shared/Media#google-doc-props-props">Media props</a>. 
+
+  {.slides}
+    # default/mobile
+    slidesType: stack
+
+    # switch to slideshow on desktop
+    slidesType-desktop: slideshow
+
+    # on a big desktop, make it scrollingslides
+    slidesType-1200px: scrollingslides
+
+
+    # Wrapper props by viewport  
+    hed: My San Francisco Scoop Photo Stack
+    hed-desktop: My San Francisco Slideshow
+    hed-1200px: My San Francisco ScrollingSlides
+
+    maxWidth: body
+    maxWidth-desktop: wide
+    
+    leadin: Wanna see something cool? Change 'slidesType' to any of: 'stack', 'scrollingSlides', 'slideshow' or 'tapstory'.
+
+    [.items]
+      # Expected props for a "step story" item
+      media: 100000007127463
+      text: My first caption
+
+      # Wrapper props
+      credit: Josh Williams/The New York Times
+      label: SFO
+
+
+      media: 100000007127462
+      text: This i my second caption.
+      credit: Josh Williams/The New York Times
+      label: Chinatown
+
+
+      media: 100000007127461
+      text: This is my third caption.
+      credit: Josh Williams/The New York Times
+      label: Demolished eastern span of the Bay Bridge
+
+      media: 100000007127460
+      caption: This is my fourth caption.
+      credit: Josh Williams/The New York Times
+      label: Western span of the Bay Bridge
+    []
+  {}
+
+  Tk the rest of our story. Consectetur excepteur sunt incididunt veniam aliquip. Consequat sunt in veniam sit consectetur enim id qui sunt occaecat veniam in. Eiusmod elit ex adipisicing ut officia ipsum elit commodo elit irure. Ullamco cillum exercitation sint esse. Anim ullamco ullamco reprehenderit commodo do minim qui eiusmod est adipisicing in. Proident id culpa pariatur deserunt irure commodo excepteur.
+[]
+
+
+

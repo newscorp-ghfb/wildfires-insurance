@@ -75,9 +75,7 @@ if (!isServe) {
       filename: 'inset.json',
       minify: false,
       inject: false,
-      publicPath: `https://asset.wsj.net/wsjnewsgraphics/dice/${config.slug}-${
-        config.uuid
-      }${isDev ? '-dev' : ''}/`,
+      publicPath: `https://asset.wsj.net/wsjnewsgraphics/dice/${config.slug}-${config.uuid}${isDev ? '-dev' : ''}/`,
       templateContent: ({ htmlWebpackPlugin }) => {
         return JSON.stringify(generateInset(htmlWebpackPlugin));
       },
@@ -85,9 +83,7 @@ if (!isServe) {
     new HtmlWebpackPlugin({
       filename: 'iframe.html',
       template: path.resolve(__dirname, 'preview/iframe.html'),
-      publicPath: `https://asset.wsj.net/wsjnewsgraphics/dice/${config.slug}-${
-        config.uuid
-      }${isDev ? '-dev' : ''}/`,
+      publicPath: `https://asset.wsj.net/wsjnewsgraphics/dice/${config.slug}-${config.uuid}${isDev ? '-dev' : ''}/`,
     }),
   );
 }
@@ -129,6 +125,25 @@ const rules = [
       },
     ],
   },
+  {
+    test: /\.ts$/,
+    exclude: /node_modules/,
+    use: {
+      loader: 'ts-loader',
+    },
+  },
+  {
+    test: /\.(mp4|webm|ogg|mp3|wav|flac|aac)(\?.*)?$/,
+    use: [
+      {
+        loader: 'file-loader',
+        options: {
+          name: '[name].[hash:8].[ext]',
+          outputPath: 'media/', // Where you want to save the files
+        },
+      },
+    ],
+  }
 ];
 
 if (config.framework === 'handlebars' || config.framework === 'storyboard') {
@@ -143,6 +158,9 @@ if (config.framework === 'handlebars' || config.framework === 'storyboard') {
       options: {
         partialDirs: [path.resolve(__dirname, 'src/partials')],
         helperDirs: [path.resolve(__dirname, 'src/helpers')],
+        compilerOptions: {
+          dev: false // disable warnings in dev mode
+        }
       },
     },
   );
@@ -175,9 +193,11 @@ if (config.framework === 'vue') {
 
 if (config.framework === 'svelte') {
   resolve = {
-    extensions: ['.mjs', '.js', '.svelte'],
+    extensions: ['.mjs', '.js', '.svelte', '.ts'],
+    alias: {
+      $lib: path.resolve(__dirname, 'src/lib'), // Adjust this path as needed
+    },
   };
-
   rules.push(
     {
       test: /\.css$/,
@@ -236,12 +256,10 @@ module.exports = {
   },
   plugins,
   devServer: {
-    allowedHosts: 'all',
-    hot: true,
     compress: true,
     port: 9000,
     static: {
-      directory: path.resolve(__dirname, 'preview'),
+      directory: path.resolve(__dirname, 'public'),
     },
     ...(config.https && {
       https: {

@@ -1,0 +1,300 @@
+.g-scrollingparty-container,
+.g-scrollingparty-fallback,
+.g-scrollingparty-overlay {
+  height: 100vh;
+  left: 0;
+  overflow: hidden;
+  position: -webkit-sticky;
+  position: sticky;
+  top: 0;
+  width: 100%;
+}
+.g-scrollingparty-container video,
+.g-scrollingparty-fallback video,
+.g-scrollingparty-overlay video,
+.g-scrollingparty-container img,
+.g-scrollingparty-fallback img,
+.g-scrollingparty-overlay img {
+  height: 100%;
+  left: 0;
+  object-fit: cover;
+  overflow: hidden;
+  position: absolute;
+  top: 0;
+  width: 100%;
+  z-index: 0;
+}
+.g-scrollingparty-container img,
+.g-scrollingparty-fallback img,
+.g-scrollingparty-overlay img {
+  opacity: 0;
+}
+.g-scrollingparty-container img.g-show,
+.g-scrollingparty-fallback img.g-show,
+.g-scrollingparty-overlay img.g-show {
+  opacity: 0;
+  transition: opacity 0.25s ease-in;
+}
+.g-scrollingparty-fallback {
+  border-image-width: 0 !important;
+  border: none;
+}
+.g-scrollingparty-fallback img {
+  height: 100%;
+  left: 0;
+  object-fit: cover;
+  overflow: hidden;
+  position: absolute;
+  top: 0;
+  width: 100%;
+  z-index: 0;
+  opacity: 0;
+  border: none;
+  border-top-color: rgb(255, 0, 0);
+  transition: all 0.35s ease-in-out;
+  border-image-width: 0 !important;
+  background-size: 150px 150px;
+}
+.g-scrollingparty-fallback img.g-show {
+  opacity: 1;
+  display: block;
+}
+.g-asset.g-scrollingparty {
+  min-height: 100vh;
+  width: 100%;
+}
+.g-asset .g-asset_inner {
+  position: relative;
+}
+.g-asset.g-scrollingparty .g-scrollingparty-annotations .g-annotation {
+  height: 100vh;
+  position: relative;
+  z-index: 99;
+}
+.g-asset.g-scrollingparty
+  .g-scrollingparty-annotations
+  .g-annotation
+  .g-annotation-wrap {
+  box-sizing: border-box;
+  margin-bottom: 0;
+  color: initial;
+  background-color: rgba(255, 255, 255, 0.95);
+  border-radius: 4px;
+  padding: 18px 22px;
+}
+.g-asset.g-scrollingparty
+  .g-scrollingparty-annotations
+  .g-annotation.g-slide-header
+  .g-annotation-wrap {
+  padding: 10px 20px;
+}
+.g-asset.g-scrollingparty
+  .g-scrollingparty-annotations
+  .g-annotation
+  .g-subhed {
+  margin-top: 10px;
+}
+.g-asset.g-scrollingparty .g-scrollingparty-annotations .g-annotation .g-text {
+  margin: 0;
+  margin-bottom: var(--g-body-margin-bottom);
+}
+.g-asset.g-scrollingparty
+  .g-scrollingparty-annotations
+  .g-annotation
+  .g-text:last-child {
+  margin-bottom: 0;
+}
+.g-asset.g-scrollingparty .g-scrollingparty-annotations {
+  display: flex;
+  justify-content: center;
+}
+.g-asset.g-scrollingparty
+  .g-scrollingparty-annotations
+  .g-annotation
+  .g-annotation-wrap {
+  margin-inline: var(--g-margin-inline);
+}
+@media (min-width: 640px) {
+  .g-asset.g-scrollingparty
+    .g-scrollingparty-annotations
+    .g-annotation
+    .g-annotation-wrap {
+    margin-inline: auto;
+  }
+}
+@media (min-width: 740px) {
+  .g-asset.g-scrollingparty .g-scrollingparty-annotations {
+    display: initial;
+    justify-content: unsafe;
+  }
+  .g-align-slides-left {
+    left: 0;
+    transform: translate(15%, 0);
+  }
+  .g-align-slides-right {
+    right: 0;
+    transform: translate(-15%, 0);
+  }
+  .g-align-slides-center {
+    transform: translate(-50%);
+    left: 50%;
+  }
+  .g-asset.g-scrollingparty
+    .g-scrollingparty-annotations
+    .g-annotation.g-slide-header
+    .g-annotation-wrap {
+    max-width: inherit;
+    transform: initial;
+  }
+}
+@media (min-width: 768px) {
+  .g-asset.g-scrollingparty
+    .g-scrollingparty-annotations
+    .g-annotation
+    .g-annotation-wrap {
+    bottom: 50%;
+    letter-spacing: 0;
+    font-size: 20px;
+    line-height: 1.3;
+    -webkit-font-smoothing: antialiased;
+  }
+}
+@media (min-width: 1250px) {
+  .g-asset.g-scrollingparty
+    .g-scrollingparty-annotations
+    .g-annotation.g-slide-header
+    .g-annotation-wrap
+    p {
+    max-width: inherit;
+  }
+}
+
+/* after effect objects */
+.g-scrollingparty-text {
+  position: absolute;
+  top: 0;
+  left: 0;
+  display: flex;
+  align-items: flex-start;
+  opacity: 0;
+}
+.g-scrollingparty-text div {
+  display: block;
+  position: relative;
+  width: 100%;
+  white-space: nowrap;
+}
+.g-scrollingparty-image {
+  position: absolute;
+  top: 0;
+  left: 0;
+  opacity: 0;
+  object-fit: unset !important;
+  overflow: unset !important;
+  max-width: unset;
+  max-height: unset;
+}
+.g-scrollingparty-video-container {
+  position: absolute;
+  top: 0;
+  left: 0;
+  object-fit: unset !important;
+  overflow: unset !important;
+  max-width: unset;
+  max-height: unset;
+}
+.g-scrollingparty-video-container-with-button {
+  position: absolute;
+  top: 0;
+  left: 0;
+  object-fit: unset !important;
+  overflow: unset !important;
+  max-width: unset;
+  max-height: unset;
+  background: url("https://static01.nytimes.com/newsgraphics/scrollingparty-assets/play-back.png")
+    no-repeat center;
+}
+.g-scrollingparty-video {
+  position: absolute;
+  top: 0;
+  left: 0;
+  object-fit: unset !important;
+  overflow: unset !important;
+  max-width: unset;
+  max-height: unset;
+  width: 100%;
+  height: 100%;
+}
+.g-scrollingparty-video-mute {
+  position: absolute;
+  bottom: 10px;
+  right: 10px;
+  display: block;
+  height: 25px;
+  width: 25px;
+  margin-bottom: 16px;
+  margin-right: 16px;
+  background-image: url("https://static01.nytimes.com/newsgraphics/scrollingparty-assets/speaker.svg");
+  background-size: cover;
+  cursor: pointer;
+  opacity: 0.7;
+  background-position: 0 0;
+}
+.g-scrollingparty-video-mute:hover {
+  opacity: 1;
+}
+.g-scrollingparty-null {
+  position: absolute;
+  top: 0;
+  left: 0;
+  opacity: 0;
+  object-fit: unset !important;
+  overflow: unset !important;
+  max-width: unset;
+  max-height: unset;
+}
+.g-scrollingparty-shape {
+  position: absolute;
+  top: 0;
+  left: 0;
+  visibility: visible;
+}
+.g-scrollingparty-shape-hide {
+  position: absolute;
+  top: 0;
+  left: 0;
+  visibility: hidden;
+}
+.g-scrollingparty-layer-hide {
+  display: none;
+}
+.g-scrollingparty-debug {
+  width: 100%;
+  font: 500 1em/1 var(--g-franklin);
+  line-height: -1em;
+  color: #f00;
+  background-color: #f00;
+}
+
+@keyframes insetAnim {
+  0% {
+    clip-path: inset(0% 0% 0% 0%);
+    opacity: 1;
+  }
+
+  50% {
+    clip-path: inset(0% 0% 40% 0%);
+    opacity: 0.5;
+  }
+
+  100% {
+    clip-path: inset(0% 3% 98% 3%);
+    opacity: 0;
+  }
+}
+.g-scrollingparty-inset-open {
+  animation: 0.3s ease-in 0s 1 normal forwards running insetAnim;
+}
+.g-scrollingparty-inset-close {
+  animation: 0.3s ease-out 0s 1 reverse backwards running insetAnim;
+}

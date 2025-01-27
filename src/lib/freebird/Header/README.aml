@@ -1,0 +1,58 @@
+{page}
+    # news, opinion, upshot
+    theme: news 
+    headline.default: Lorem ipsum 
+    headline.seo: 
+    byline: By The New York Times 
+    summary: 
+    # leadin gets rendered by header
+    leadin: 
+    source: 
+    note: 
+    updatedText: 
+    credit: 
+    displayOverrides: HIDE_HEADER, HIDE_TOP_AD
+    displayStyle: minimal 
+    type: interactive
+    # options
+    placement: 
+    yearBasedUrl: false
+    updateScoop: true
+{}
+
+[+body]
+  subhed: Headers
+
+  The header can show the sharetools -- or not (they will be hidden by default). 
+
+  {.header}
+  {}
+
+  The sharetools can take a variety of themes: light-filled or dark-filled.
+
+  {.header}
+    sharetools.show: true
+    # light-filled, dark-filled, light-transparent, dark-transparent
+    sharetools.theme: light-filled
+  {}
+
+  {.header}
+    sharetools.show: true
+    # light-filled, dark-filled, light-transparent, dark-transparent
+    sharetools.theme: dark-filled
+  {}
+
+  {.header}
+    sharetools.show: true
+    layout: extrabold
+    align: center
+  {}
+
+  {.header}
+    align: left
+  {}
+
+  {.header}
+    kicker: Uncharted waters
+  {}
+[]

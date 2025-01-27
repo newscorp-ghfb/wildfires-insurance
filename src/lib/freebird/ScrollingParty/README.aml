@@ -1,0 +1,50 @@
+
+[+body]
+
+{.scrollingparty}
+  id: main
+  frameRate: 30
+  frameLength: 573
+  scrollStart: 0.1
+  scrollEnd: 0.85
+  height-desktop: 0.6
+  height-mobile: 0.8
+  sizes-desktop: 1600,1600
+  sizes-mobile: 1600,1600
+  videoRenditions: https://int.nyt.com/newsgraphics/2020/after-effects-to-html/walking/walking-v1
+  tracking-desktop: https://static01.nytimes.com/newsgraphics/scrollingparty-assets/scrollingparty.json
+  tracking-mobile: https://static01.nytimes.com/newsgraphics/scrollingparty-assets/scrollingparty.json
+  animatedSlides:false
+  alignSlides: left
+  slideMaxWidth: 500px
+  maxWidth: full
+  sources: 
+  credit:
+  debug: false
+
+  [.slides]
+    percent: 0.025
+    {.header}
+      sharetools.show: true
+    {}
+
+    percent: 0.2
+    text: The ae2html script is used here to make HTML labels and to create SVGs over scrolling video.
+
+    percent: 0.3
+    subhed: Subheds work inside slides too
+    text: You can pass a subhed prop and render a subhed. Easy!
+
+    percent: 0.5
+    subhed: Media works, too
+    media: _images/bird.png
+    text: Pass the media prop with your asset slug or Scoop id and it should just work.
+
+    percent: 0.65
+    text: An SVG shape can be set to a relative or absolute size. Label alignments are based on the X and Y values of the anchor points.
+
+    percent: 0.8
+    alignSlide: right
+    text: Motion tracking can be used in After Effects to create positions for SVG elements and labels.
+  []
+{}

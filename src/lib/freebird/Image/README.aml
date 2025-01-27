@@ -1,0 +1,30 @@
+[+body]
+  {.image}
+    hed: Local, responsive image
+    media: _images/bird.png
+    maxWidth: wide
+    marginInline: true
+    caption: All things being equal, we should use auto-optimized, responsive images. Images in `_images` will be processed automatically.
+    credit: The New York Times
+  {}
+  {.image}
+    media:100000007122900
+    hed: Full bleed scoop image
+    caption: Note: This credit comes from Scoop.
+    maxWidth:full
+    marginInline: false
+  {}
+  {.image}
+    media:100000007122900
+    hed: Replace scoop credit
+    credit: NOT Josh Williams/The New York Times
+    caption: This credit replaces the value from Scoop.
+  {}
+  {.image}
+    hed: Rain in San Francisco
+    hed: Suppress scoop credit
+    media:100000007122900
+    credit:
+    caption: The Scoop credit is hidden.
+{}
+[]

@@ -1,0 +1,56 @@
+{page}
+  headline.default: Wayfinder demo
+  displayOverrides: HIDE_HEADER, HIDE_TOP_AD
+  displayStyle: minimal 
+  type: interactive
+{}
+
+[+body]
+
+{.wayfinder}
+  id: g-short-track
+  maxWidth: full
+  marginInline: false
+  marginBlock: false
+  mobileScrollHeight: 10000
+  mobileImage: ai/short-track.jpg
+  mobileRows: 5
+  mobileColumns: 8
+  desktopScrollHeight: 20000
+  desktopImage: ai/short-track.jpg
+  desktopRows: 5
+  desktopColumns: 8
+  params: https://static01.nytimes.com/dolos/dependencies/2023-08-11-wayfinder-examples/3788d111-24be-4c87-8737-308a196a57af/_assets/wayfinder/json/short-track.json
+  inset: true
+  debug: false
+  altText: Photograph showing a close race in the third turn of the women’s short track competition.
+  # documentation-only, don't copy-paste
+  baseImagesPath: https://static01.nytimes.com/dolos/dependencies/2023-08-11-wayfinder-examples/_big_assets/wayfinder
+  baseAssetsPath: https://static01.nytimes.com/dolos/dependencies/2023-08-11-wayfinder-examples/3788d111-24be-4c87-8737-308a196a57af/_assets/wayfinder
+
+  [.slides]
+    text: 
+    {.header}
+      sharetools.show: true
+    {}
+    percent: 0.02
+
+    text: Here’s the first slide, with plenty of extra room for copy. The image tiles lazy load along the path and get replaced with higher resolution versions as they appear in  the viewport. Please check the Wayfinder documentation for more information.
+    subhed: This is Wayfinder
+    percent: 0.2
+
+    text: Here’s the second slide, which could be an image, video, audio, ai2html, etc.
+    media: _images/example.jpg
+    percent: 0.4	
+
+    text: Here’s the third slide at 60% of the total scroll height.
+    percent: 0.6
+
+    text: Here’s the fourth slide. It’s best to leave a little room between the last slide and the bottom of the tiles.
+    percent: 0.8
+
+    text: 
+    lorem:
+    percent: 0.9
+  []
+{}

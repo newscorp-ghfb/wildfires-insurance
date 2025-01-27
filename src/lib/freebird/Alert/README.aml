@@ -1,0 +1,47 @@
+[+body]
+  subhed: Alert component
+
+  A component that is useful to display prominent text.
+
+  Use it very quickly inline like this:
+
+  alert: This is an alert for an update to this story.
+
+  Or extend it with standard <a target="_blank" href="../shared/Wrapper/">Wrapper props</a> to include classes, ids, width and margins:
+
+  {.alert}
+    className: g-custom-alert
+    id: g-custom-id
+    maxWidth: full
+    marginBlock: false
+    marginInline: false
+    text: This is an alert for an update to this story.
+  {}
+
+  If you change the `type` to `refer` you'll turn the alert into a refer prompt which is toned gray.
+
+  {.alert}
+    type: refer
+    text: This is a refer to another story. Here's a link to something else.
+  {}
+
+  There's also the `warning` type:
+
+  {.alert}
+    type: warning
+    text: This is a warning. Use with care.
+  {}
+
+  You can also do multi-line text like this:
+
+  {.alert}
+    [+.text]
+      Multi-line Alert Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec interdum diam odio, euismod elementum velit fermentum ut. 
+
+      Praesent ultricies elit ac enim ullamcorper vestibulum. Vivamus imperdiet ante sed venenatis tincidunt. Vivamus facilisis ullamcorper nulla, sed tristique eros dictum eget. Aenean orci libero, aliquam quis ex eget, malesuada rutrum augue. 
+
+      Morbi hendrerit nunc ac nulla interdum consectetur. Praesent vel.
+    []
+  {}
+
+[]

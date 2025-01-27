@@ -1,0 +1,27 @@
+[+body]
+  subhed: Audio Player
+
+  The {.audio} template allows us to play Scoop audio or MP3 URLs in our projects. To use, pass the Scoop ID or the fully qualified URL to the 'media' prop.
+
+  As a Wrapper-based template, it supports all standard <a target="_blank" href="../shared/Wrapper/">Wrapper props</a> for metadata, width and margins.
+
+  Under the hood, the player is a skinned VHS audio player, and as such supports the passing of <a href="https://github.com/nytimes/vhs3/blob/main/doc/OPTIONS.md">VHS options</a>.
+
+  {.audio}
+    hed: MP3 URL
+    media: https://static.nytimes.com/podcasts/2023/06/23/podcasts/23tal-greetings-people-of-earth-actthree/20230623-Sh-GreetingsEarth-actthree.mp3
+    caption: My audio player caption.
+
+    {.vhs_options}
+
+    {}
+  {}
+
+  The VHS player pulls in Scoop metadata, like credits.
+
+  {.audio}
+    hed: Scoop Audio Test
+    media: 100000007127414
+  {}
+
+[]

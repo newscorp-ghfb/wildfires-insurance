@@ -1,0 +1,33 @@
+[+body]
+  subhed: ScrollingSlides
+
+  ScrollingSlides is a pre-configured scrolling template for displaying text over a supporting visual. This is useful for in-article scrolling graphics or page toppers with a story headline.
+
+  The template takes an array of 'items', which can include a 'media' prop, a text prop and Wrapper props. The 'text' is the foreground scrolling text, and the 'media' can be any supported Media middleware, like ai2html, local images, Scoop images, videos, etc.
+
+  The template supports a wide variety of configurations. See <a target="_blank" href="https://github.com/newsdev/birdkit/blob/main/packages/template-freebird/src/lib/freebird/ScrollingSlides/README.md">README</a>.
+
+  As a Wrapper-based template, it supports all standard <a target="_blank" href="../shared/Wrapper/">Wrapper props</a> for metadata, width and margins.
+
+
+  {.scrollingslides}
+  
+    maxWidth: full
+    marginInline: false
+    stepper: true
+
+    [.items]
+      media: 100000007126825
+      text: This is my first bit of text.
+
+
+      media: 100000007126826
+      text: This is my first bit of text.
+
+
+      media: 100000007126827
+      text: This is my first bit of text.
+    []
+
+  {}
+[]

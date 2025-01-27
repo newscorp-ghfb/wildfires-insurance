@@ -1,0 +1,141 @@
+[+body]
+
+  subhed: The Wrapper
+
+  The Wrapper component standardizes much of the look of our in-article graphics and visuals. It manages widths and margins, and the styling of standard metadata props like `hed`, `caption`, `credit`, etc. It also creates, as needed, A11Y markup. 
+  
+  
+  This component is a low-level, 'shared' component not meant to be used independently in our Google Docs. Rather, the component is used by most Freebird templates, so the examples shown below apply equally to {.video}, {.grid}, etc.
+
+  A typical use might look something like this.
+
+  {.image}
+    media:_images/bird.png
+    hed: My headline
+    caption: A bird caption.
+    credit: The New York Times
+  {}
+
+  subhed: All metadata props, and text alignment
+
+  All visuals using the Wrapper get the following pre-styled fields and can specify an element className and/or ID.
+
+
+  {.image}
+    media:_images/bird.png
+    id: my-bird-image
+    className: image-promo
+    hed: Image headline.
+    leadin: Image leadin text goes here.
+    caption: A bird caption.
+    credit: Image credit.
+    source: Additional source information.
+    note: Additional notes.
+    label: A bird
+  {}
+
+  By default, Wrapper text is left aligned. But you can specify 'left', 'center' or 'right'.
+
+  {.image}
+    media:_images/bird.png
+    hed: Centered text
+    leadin: Image leadin text goes here.
+    caption: A bird caption.
+    credit: Image credit.
+    source: Additional source information.
+    note: Additional notes.
+    label: A bird
+    textAlign: center
+  {}
+
+  'textAlign' alone changes header and footer text. But you can independently control them with 'headerTextAlign' and 'footerTextAlign'.
+
+  {.image}
+    media:_images/bird.png
+    hed: Centered hed. Left aligned footer.
+    leadin: Image leadin text goes here.
+    caption: A bird caption.
+    credit: Image credit.
+    source: Additional source information.
+    note: Additional notes.
+    label: A bird
+    headerTextAlign: center
+  {}
+
+
+
+  subhed: Widths and margins
+
+  By default, templates using the Wrapper are text width and don't include a left or right margin, but do include the standard top and bottom margins.
+
+  {.image}
+    media:_images/bird.png
+  {}
+
+  Widths are set via `maxWidth` and can be, in ascending order: 'body', 'wide' or 'full'.
+
+  {.image}
+    media:_images/bird.png
+    maxWidth: wide # body, wide or full
+  {}
+
+  It's generally discouraged, but you can also specify values in CSS width units, like 300px or 10vw. Unit-less values will be treated at pixels.
+
+  {.image}
+    media:_images/bird.png
+    maxWidth: 120px
+  {}
+
+  By default, wrapper meta — like headlines above and captions below — have a maxWidth of 'body', which looks good most of the time. But they can be controlled independently as needed with 'headerMaxWidth' and 'footerMaxWidth'.
+
+  {.image}
+    media:_images/bird.png
+    maxWidth: wide
+    headerMaxWidth: wide
+    headerMarginInline: false
+    hed: My headline matches image width.
+    caption: My caption remains at the default body width but can be changed with footerMaxWidth.
+  {}
+
+  Margins are controlled with 'marginBlock' and 'marginInline', a nod to <a href="https://developer.mozilla.org/en-US/docs/Web/CSS/CSS_logical_properties_and_values">CSS's logical properties</a>. Top and bottom margins are controlled with the 'marginBlock' prop, left and right with 'marginInline'.
+
+  Both props can take false to eliminate the margin, or true to get the Freebird default.
+
+  You can also pass valid CSS size values (like 20px) and, like CSS logical properties, pass a either single value or two independent values.
+
+  {.image}
+    media:_images/bird.png
+    maxWidth: full
+    marginInline: false
+    hed: For true full bleed, remove default marginInline
+  {}
+
+  {.image}
+    media:_images/bird.png
+    maxWidth: full
+    marginBlock: false
+    hed: Remove top and bottom margins
+  {}
+
+
+  {.image}
+    media:_images/bird.png
+    maxWidth: full
+    marginBlock: 120px
+    marginInline: 10vw
+    hed: Custom margins
+  {}
+
+  Like 'maxWidth', there are header and footer 'marginInline' variants: 'headerMarginInline' and 'footerMarginInline'.  
+
+  {.image}
+    media:_images/bird.png
+    maxWidth: full
+    marginInline: true
+    headerMarginInline: false
+    footerMarginInline: 30vw
+    hed: header/footer marginInline
+    caption: This caption has 30vw marginInline
+  {}
+
+[]

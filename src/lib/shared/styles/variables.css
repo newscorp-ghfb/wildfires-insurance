@@ -1,0 +1,69 @@
+/**
+ * Base Freebird-wide styles go here and are automatically 
+ * scoped to your project. You probably shouldn't edit this 
+ * file. If you want to override one of these variables,
+ * do so in project.css
+ */
+
+html {
+  /* universal font families */
+  --g-aileron: "Aileron", helvetica,
+    sans-serif
+      /* 
+		common colors. 
+		inherit NYT vars where possible, but provide fallbacks in 
+		case platform changes var names  
+	*/
+      --g-byline-black: #363636;
+  --g-color-copy: #121212;
+  --g-color-graphic-caption: #333333;
+  --g-color-graphic-credit: #777777;
+  --g-color-anchor: #326891;
+  --g-color-loading-background: var(
+    --color-background-tertiary,
+    hsla(0, 0%, 92.16%, 1)
+  );
+  /* NYT color w/ fallback */
+
+  /* named width */
+  --g-width-body: 620px;
+  --g-width-wide: 1050px;
+
+  /* body text */
+  --g-body-color: var(--g-color-copy);
+  --g-body-background-color: inherit;
+  --g-body-font-family: var(--g-aileron);
+  --g-body-font-weight: 500;
+  --g-body-font-size: 1rem;
+  --g-body-line-height: 1.38;
+  --g-body-margin-top: inherit;
+  --g-body-margin-right: inherit;
+  --g-body-margin-bottom: 12.5px;
+  --g-body-margin-left: inherit;
+  --g-body-padding-top: inherit;
+  --g-body-padding-right: inherit;
+  --g-body-padding-bottom: inherit;
+  --g-body-padding-left: inherit;
+
+  --g-margin-left: 20px;
+  --g-margin-right: 20px;
+  --g-margin-inline: var(--g-margin-left) var(--g-margin-right);
+  --g-margin-top: 25px;
+  --g-margin-bottom: 25px;
+  --g-margin-block: var(--g-margin-top) var(--g-margin-bottom);
+}
+
+@media (min-width: 740px) {
+  html {
+    --g-body-font-size: 1.15rem;
+    --g-body-line-height: 1.5;
+  }
+}
+
+em {
+  font-style: italic;
+}
+
+strong {
+  font-weight: 700;
+}

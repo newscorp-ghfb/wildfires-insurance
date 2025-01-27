@@ -1,0 +1,135 @@
+[+body]
+
+	The video component displays video sources on the page. It takes a media prop, which can be a Scoop ID, a Videotape link or a path to a local file:
+
+	Basic usage:
+
+	{.video}
+		media: https://int.nyt.com/data/videotape/finished/2022/10/mideast-heat/mideast_030-1254w.mp4
+	{}
+
+	Through the `mediaComponent` prop you can pick which player will be used to display your video source:
+	
+	* VHS: a Svelte wrapper using the <a href="https://github.com/nytimes/vhs3">VHS library from The New York Times</a>.
+	* VideoPlayer: a custom player built with Svelte.
+	* Video: mostly a logic-less video markup.
+
+	For more details about each player and guidance on when to use each, see the sections below. Note that not all players are able to load all different `media` sources. See the <strong>Media handling</strong> item under each section for details.
+
+	If you don’t specify a `mediaComponent`, a default player will be selected based on your media source:
+
+	* Scoop and Videotape -> VHS
+	* Local video -> VideoPlayer
+	
+	The following additional parameters can be passed and are common between the three players:
+
+	{.video}
+		media: https://int.nyt.com/data/videotape/finished/2022/10/mideast-heat/mideast_030-1254w.mp4
+		
+		autoplay: true
+		loop: true
+		muted: true
+		poster: https://int.nyt.com/data/videotape/finished/2022/10/mideast-heat/mideast_030-1254w.jpg
+		controls: true
+		loop: false
+		playsinline: true
+		preload: auto		
+	{}
+
+	subhed: VHS
+
+	Tk may need some example with vhsOptions.
+	On guidance, could explain that it is the only one able to display ads and have analytics.
+
+	Media handling:
+	* Scoop ID: loads responsive video sources from Scoop
+	* Videotape: loads the single rendition passed via `media`
+	* Local file: can’t load a local file
+	
+
+	subhed: VideoPlayer
+
+	The VideoPlayer component is an alternative to the native VHS player, used when a story requires custom control over design and/or development aspects such as: caption styling, media orchestration, custom playback events, integration with other Svelte components and UI styling.
+	
+	Its media prop can take a Videotape url, a Scoop video id or a path to a local file. Additional props match the native video element ones — autoplay, loop, muted, playsinline, preload and controls.
+
+	Media handling:
+	* Scoop ID: loads responsive video sources from Scoop
+	* Videotape: loads responsive video sources from Videotape
+	* Local file: loads local files
+
+	Basic usage:
+
+	{.video}
+		media: https://int.nyt.com/data/videotape/finished/2022/10/mideast-heat/mideast_030-1254w.mp4
+		mediaComponent: VideoPlayer
+
+		autoplay: true
+		loop: true
+		muted: true
+	{}
+
+	An object with additional parameters can be passed for more specific settings.
+
+	{.video}
+		media: https://int.nyt.com/data/videotape/finished/2022/10/mideast-heat/mideast_030-1254w.mp4
+		mediaComponent: VideoPlayer
+
+		autoplay: true
+		loop: true
+		muted: true
+
+		{.videoPlayerOptions}
+			customControls: false
+			playOnlyWhenInView: false
+			treatAsImageIfCantAutoplay: true
+			subtitles:
+		{}		
+	{}
+
+	The additional parameters include subtitles, which takes a path to a local srt.
+
+	{.video}
+		media: https://int.nyt.com/data/videotape/finished/2021/07/1626309009/route-setting_master_colorsound-1254w.mp4
+		mediaComponent: VideoPlayer
+
+		autoplay: false
+		loop: true
+		muted: true
+
+		{.videoPlayerOptions}
+			customControls: true
+			playOnlyWhenInView: true
+			treatAsImageIfCantAutoplay: false
+			subtitles: ondra-route-setting.srt
+		{}
+	{}
+
+	For additional settings when using the VideoPlayer from inside another component, see lib/shared/VideoPlayer.
+
+	
+	subhed: Video
+	
+	The `Video` player can be used when there is no need for responsiveness or media orchestration.
+
+	Media handling:
+	* Scoop ID: can’t load Scoop files
+	* Videotape: loads the single rendition passed via `media`
+	* Local file: loads local files
+
+	Basic usage:
+
+	{.video}
+		media: https://int.nyt.com/data/videotape/finished/2022/10/mideast-heat/mideast_030-1254w.mp4
+		mediaComponent: video
+		
+		autoplay: true
+		loop: true
+		muted: true
+		poster: https://int.nyt.com/data/videotape/finished/2022/10/mideast-heat/mideast_030-1254w.jpg
+		controls: true
+		loop: false
+		playsinline: true
+		preload: auto		
+	{}	
+[]

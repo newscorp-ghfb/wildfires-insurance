@@ -1,0 +1,44 @@
+/* 
+ *	WARNING. DO NOT MODIFY THIS FILE. THESE ARE PLATFORM-LEVEL OVERRIDES WE NEED FOR ALL PROJECTS. 
+ * 
+ *  If you need to make platform modifications, do so in platform.css  
+ *
+ **/
+
+.interactive section {
+  max-width: 100%;
+  width: 100%;
+}
+
+#interactive-heading {
+  /* text-align: center; */
+  font-style: normal;
+  font-weight: 500;
+  font-size: 2.375rem;
+  line-height: 1.21;
+  text-align: center;
+}
+
+@media (min-width: 1024px) {
+  #interactive-heading {
+    font-size: 2.9375rem;
+    line-height: 1.14;
+  }
+}
+
+#interactive-byline {
+  margin: 0 auto;
+  text-align: center;
+}
+
+#interactive-byline time {
+  white-space: pre;
+}
+
+#interactive-standalone-sharetools {
+  display: none;
+}
+
+.interactive-timestamp {
+  margin-bottom: 0;
+}

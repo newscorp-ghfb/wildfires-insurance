@@ -1,0 +1,24 @@
+[+body]
+  subhed: Asset Template
+
+  For times when you don't want media to be limited to a single asset type, the generic Asset template can be used. It works just like other Freebird media templates, like `{.video}`, `{.image}`, `{.graphic}` and `{.embed}`, but doesn't enforce type checks of values passed to the `media` prop.
+
+  Mixed with responsive props, you can art direct by platform. For example, mobile could have a static image while desktop has an ai2html.
+
+  As a Wrapper-based template, it supports all standard <a target="_blank" href="../shared/Wrapper/">Wrapper props</a> for metadata, width and margins.
+
+  {.asset}
+    media: _images/bird.png
+    media-desktop: example.html
+
+    # Wrapper props
+    hed: Mobile image
+    caption: On mobile, this is a static image.
+
+    hed-desktop: Desktop ai2html
+    caption-desktop: On desktop, this is an ai2html.
+
+    credit: The New York Times
+  {}
+
+[]

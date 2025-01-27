@@ -1,0 +1,34 @@
+[+body]
+The extended byline can be used as an enhanced byline:
+
+{.extendedbyline}
+    bio: Mitch Smith reported on the Utah flag from Centerville, Orem and Salt Lake City. Sarah Almukhtar is a graphics editor who specializes in visual storytelling and design.
+    sharetools.show: true
+{}
+
+Or it can be used to incorporate multiple credits and a bio (or an extended byline):
+
+{.extendedbyline}
+    bio: Dr. Spears is an economist at the University of Texas, Austin.
+    sharetools.show: false
+{}
+
+The component will automatically pick up byline data from Scoop. However, you can also pass a custom byline to override it (add a <br> if you want a linebreak):
+
+{.extendedbyline}
+    customByline: By Mitch Smith and <a href="https://www.nytimes.com/by/sarah-almukhtar">Sarah Almukhtar</a>
+    bio: Dr. Spears is an economist at the University of Texas, Austin.
+    sharetools.show: false
+{}
+
+You can also control the position of the sharetools and move them above the byline (belowByline is the default value):
+
+{.extendedbyline}
+    bio: Dr. Spears is an economist at the University of Texas, Austin.
+    sharetools.show: false
+    sharetools.position: aboveByline
+{}
+
+The `Header` component will scan the body of the doc to see if an `ExtendedByline` component exists. If so, it will remove the byline and date from the `Header`. 
+
+[]

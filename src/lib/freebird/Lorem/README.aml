@@ -1,0 +1,29 @@
+[+body]
+
+{.lorem}
+    lede: <strong>Five words</strong>
+    words: 5
+{}
+
+{.lorem}
+    lede: <strong>Two sentences.</strong>
+    sentences: 2
+{}
+
+{.lorem}
+    lede: <strong>1-3 paragraphs</strong>
+    paragraphs: 1-3
+{}
+
+{.lorem}
+    lede: <strong>Parameters are stackable. 1-3 paragraphs, with 2-3 sentences per paragraph, and 3 words per sentence:</strong>
+    words: 3
+    sentences: 2-3
+    paragraphs: 1-3
+{}
+
+{.lorem}
+	paragraphs: 1-3
+{}
+
+[]

@@ -1,0 +1,65 @@
+[+body]
+
+A component to add related links to stories. Users can enter a list of article ids and the corresponding info for each asset will be displayed: url, headline, byline and date, plus thumbnail and summary depending on the display style. Functionality and visuals are borrowed from the corresponding Oak component.
+
+There are 2 display styles to choose from:
+
+subhed: Standard Display
+
+All of the information listed above is displayed.
+
+{.relatedlinks}
+  hed: Related Links
+  leadin: Read more about tk tk tk
+  display: standard
+  # compact, standard
+  hideFields: 
+  # headline, summary, byline and/or date; separated by commas
+  [.links]
+    asset: 100000007167402
+    asset: 100000008992094
+    asset: 100000009055977
+    asset: 100000008790957
+    asset: 100000008245132
+  []
+{}
+
+subhed: Compact Display
+
+Only hed, byline and date are displayed.
+
+{.relatedlinks}
+  hed: Related Links
+  leadin: Read more about tk tk tk
+  display: compact
+  # compact, standard
+  hideFields: 
+  # headline, summary, byline and/or date; separated by commas
+  [.links]
+    asset: 100000007167402
+    asset: 100000008992094
+    asset: 100000008245132
+  []
+{}
+
+subhed: Custom Display
+
+Further customization can be done by hiding specific fields:
+
+{.relatedlinks}
+  hed: Related Links
+  leadin: Read more about tk tk tk
+  display: standard
+  # compact, standard
+  hideFields: summary, byline
+  # headline, summary, byline and/or date; separated by commas
+  [.links]
+    asset: 100000007167402
+    asset: 100000008992094
+    asset: 100000009055977
+    asset: 100000008790957
+    asset: 100000008245132
+  []
+{}
+
+[]

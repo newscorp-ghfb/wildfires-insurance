@@ -1,0 +1,15 @@
+export const WRAPPER_ARIA_LABEL: Record<string, string> = {
+  graphic: "graphic",
+  scoopEmbeddedInteractive: "graphic",
+  scoopVideo: "video",
+  videotape: "video",
+  localImage: "image",
+  remoteImage: "image",
+  localResponsiveImage: "image",
+  scoopImage: "image",
+  scoopSlideshow: "gallery",
+  scrollingSlides: "scrolling gallery",
+  slideshow: "gallery",
+  grid: "media grid",
+  gridItems: "media grid",
+};

@@ -1,0 +1,74 @@
+[+body]
+  subhed: Stack
+
+  The Stack component simply stacks media elements and their Wrapper-based props like headline, caption, etc, on the page. 
+  
+  It <em>can</em> be used as a stand-alone template. But it's real value is as a simplified mobile-only version for a more dynamic desktop presentation. It does this by  being "step story" compatible template, like like <a target="_blank" href="./ScrollingSlides">ScrollingSlides</a> and <a target="_blank" href="./Slideshow">Slideshow</a>. And like those other templates, it can be used for conditionally rendering in the dynamic  <a target="_blank" href="./Slides">Slides</a> template.
+
+  The component takes an array of items, each of which takes a 'media' prop and an optional 'text' prop as a caption. For media, any 'media' compatible value will work: local images, Scoop images, ai2html, VideoTape URLs, etc.
+
+  As a Wrapper-based template, it supports all standard <a target="_blank" href="../shared/Wrapper/">Wrapper props</a> for metadata, width and margins.
+
+  Additionally, each individual item supports most <a target="_blank" href="https://github.com/newsdev/birdkit/tree/main/packages/template-freebird/src/lib/shared/Wrapper#google-doc-props-props">Wrapper props</a> and most <a href="https://github.com/newsdev/birdkit/tree/main/packages/template-freebird/src/lib/shared/Media#google-doc-props-props">Media props</a>. 
+
+  {.stack}
+    # Wrapper Props
+    hed: My San Francisco Scoop Photo Stack
+    maxWidth: wide
+    leadin: Wanna see something cool? Change {.stack} to {.slideshow} or {.scrollingslides}. This interoperability is the heart of the Slides component.
+
+    # Slideshow items
+    [.items]
+      media: 100000007127463
+      text: My first caption
+      credit: Josh Williams/The New York Times
+      label: SFO
+
+
+      media: 100000007127462
+      text: This i my second caption.
+      credit: Josh Williams/The New York Times
+      label: Chinatown
+
+
+      media: 100000007127461
+      text: This is my third caption.
+      credit: Josh Williams/The New York Times
+      label: Demolished eastern span of the Bay Bridge
+
+      media: 100000007127460
+      caption: This is my fourth caption.
+      credit: Josh Williams/The New York Times
+      label: Western span of the Bay Bridge
+    []
+  {}
+
+
+  {.stack}
+    hed: Noise video Stack
+    maxWidth: body
+    [.items]
+      media: https://int.nyt.com/data/videotape/finished/2023/06/noise/bqe_outdoor_prores_punchin_v3-900w.mp4
+      # wrapper props
+      label: Greenpoint, Brooklyn
+      credit: Noah Throop/The New York Times
+
+      #media props
+      autoplay: true
+      muted: true
+      loop: true
+      controls: false
+
+      media: https://int.nyt.com/data/videotape/finished/2023/06/noise/mississippitrain_outdoor_prores_4k_v2-900w.mp4
+      label: D’Lo, Miss.
+      credit: Noah Throop/The New York Times
+      autoplay: true
+      muted: true
+      loop: true
+      controls: false
+    []
+  {}
+[]
+
+
+

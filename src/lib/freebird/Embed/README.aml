@@ -1,0 +1,11 @@
+[+body]
+  subhed: Scoop Embeds
+
+  The {.embed} template allows us to place embedded interactives from Scoop into our freebird projects. To use, pass the Scoop ID to the 'media' prop.
+
+  As a Wrapper-based template, it supports all standard <a target="_blank" href="../shared/Wrapper/">Wrapper props</a> for metadata, width and margins.
+
+  {.embed}
+    media: 100000006932699
+  {}
+[]

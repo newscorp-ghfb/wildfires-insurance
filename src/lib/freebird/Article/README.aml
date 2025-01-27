@@ -1,0 +1,7 @@
+[+body]
+  subhed: Article component
+
+  {.article}
+    asset: 100000007123344
+  {}
+[]

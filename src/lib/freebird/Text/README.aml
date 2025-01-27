@@ -1,0 +1,12 @@
+[+body]
+
+This is just a regular paragraph. 
+
+{.text}
+
+  className: my-class
+  id: my-id 
+
+  value: If you want to add a custom class or id to a paragraph, you can do it like this. 
+
+[]

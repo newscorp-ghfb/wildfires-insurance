@@ -1,0 +1,45 @@
+[+body]
+  subhed: Grid template
+
+  The grid template takes an array of 'items', which can include a 'media' prop and Wrapper props, and generates a grid of with 'cols' columns.
+
+  Used with responsive props, you can make different column layouts between mobile and desktop.
+
+  As a Wrapper-based template, it supports all standard <a target="_blank" href="../shared/Wrapper/">Wrapper props</a> for metadata, width and margins.
+
+
+  {.grid}
+  hed: Mobile grid is 2 columns wide
+  hed-desktop: Desktop grid is 4 columns wide
+  
+  maxWidth: body
+  maxWidth-desktop: wide
+
+  cols: 2
+  cols-desktop: 4
+
+  credit: This is my global credit.
+
+    [.items]
+      media: _images/bird.png
+      caption: This is an image.
+      label: Local image
+
+
+      media: example.html
+      caption: This is an ai2html graphic.
+      label: ai2html
+
+
+      media: 100000007076663
+      caption: This is a scoop image.
+      label: Scoop image
+
+      media: https://int.nyt.com/data/videotape/finished/2023/02/1677511524/videotape-test-640w-413h.mp4
+      caption: A VideoTape video.
+      label: VideoTape
+
+    []
+
+  {}
+[]

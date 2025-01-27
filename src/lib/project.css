@@ -1,0 +1,129 @@
+@import "./shared/styles/variables.css";
+/**
+ * You can modify project-level styles here. They will only apply to the project itself. 
+ *
+ * Note: These styles are automatically scoped to your project and 
+ * won't bleed out into the platform. In other words, if you try to use this file 
+ * to modify #interactive-header, it won't work. Overriding platform CSS is extremely brittle
+ * and often leaves your interactive broken after a year or two. If you absolutely must
+ * edit platform css, do so in the file "platform.css". This voids your Freebird warranty!
+ */
+
+/* You can override CSS like so (this will be scoped to your project), but as noted, if you'd like 
+    to re-use component CSS, this pattern makes it difficult, so this should be one-offs or late edits only. 
+
+ .g-text { 
+    font-size: 17px;
+    line-height: 1.4em; 
+ }
+
+ 
+
+ */
+
+.highlight-text {
+  font-weight: bold;
+  /* color: #515151; */
+}
+.highlight-text-blue {
+  font-weight: bold;
+  color: #4867b2;
+}
+.people-wrap {
+  position: relative;
+  margin: 0 auto;
+}
+
+.group-fade {
+  fill-opacity: 1;
+  -moz-animation: DASH3 2s ease-in-out 1s forwards;
+  -webkit-animation: DASH3 2s ease-in-out 1s forwards;
+  animation: DASH3 2s ease-in-out 1s forwards;
+}
+
+.group-low-opacity {
+  fill-opacity: 1;
+  -moz-animation: DASH4 1.5s ease-in-out 1s forwards;
+  -webkit-animation: DASH4 1.5s ease-in-out 1s forwards;
+  animation: DASH4 1.5s ease-in-out 1s forwards;
+}
+
+.group-low-to-high-opacity {
+  fill-opacity: 0.2;
+  -moz-animation: DASH5 0.5s ease-in-out 0.5s forwards;
+  -webkit-animation: DASH5 0.5s ease-in-out 0.5s forwards;
+  animation: DASH5 0.5s ease-in-out 0.5s forwards;
+}
+
+.group-highlight-blue {
+  fill: rgb(103, 148, 255);
+}
+
+/* @-webkit-keyframes DASH3 {
+	0% {
+		fill-opacity: 0;
+	}
+	50% {
+		fill-opacity: 0.2;
+	}
+	100% {
+		fill-opacity: 0.4;
+	}
+}
+@-moz-keyframes DASH3 {
+	0% {
+		fill-opacity: 0;
+	}
+	50% {
+		fill-opacity: 0.2;
+	}
+	100% {
+		fill-opacity: 0.4;
+	}
+} */
+
+@-webkit-keyframes DASH4 {
+  0% {
+    fill-opacity: 1;
+  }
+  50% {
+    fill-opacity: 0.5;
+  }
+  100% {
+    fill-opacity: 0.2;
+  }
+}
+@-moz-keyframes DASH4 {
+  0% {
+    fill-opacity: 1;
+  }
+  50% {
+    fill-opacity: 0.5;
+  }
+  100% {
+    fill-opacity: 0.2;
+  }
+}
+
+@-webkit-keyframes DASH5 {
+  0% {
+    fill-opacity: 0.2;
+  }
+  50% {
+    fill-opacity: 0.5;
+  }
+  100% {
+    fill-opacity: 1;
+  }
+}
+@-moz-keyframes DASH5 {
+  0% {
+    fill-opacity: 0.2;
+  }
+  50% {
+    fill-opacity: 0.5;
+  }
+  100% {
+    fill-opacity: 1;
+  }
+}

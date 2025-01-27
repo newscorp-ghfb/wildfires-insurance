@@ -1,0 +1,18 @@
+[+body]
+  subhed: Scoop Slideshow
+
+  Scoop Slideshow, like the <a target="_blank" href="slideshow">standard slideshow</a>, is a <strong>work in progress</strong> in need of some design love.
+
+  The component's 'media' prop takes a Scoop Slideshow ID and turns it into an in-article slideshow.
+
+  As a Wrapper-based template, it supports all standard <a target="_blank" href="../shared/Wrapper/">Wrapper props</a> for metadata, width and margins.
+
+
+  {.scoopslideshow}
+    media: 100000007127459
+
+    # Wrapper Props
+    hed: My Slideshow
+    marginInline: true
+  {}
+[]

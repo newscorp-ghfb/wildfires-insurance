@@ -1,0 +1,18 @@
+
+[+body]
+subhed: Hello, world
+
+Or like this: 
+
+{.subhed}
+  value: Hello, World
+{}
+
+Like other elements, it takes a `className` and `id` attribute:
+
+{.subhed}
+  className: my-class
+  id: my-id
+  value: Hello, World
+{}
+[]
