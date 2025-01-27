@@ -2,34 +2,30 @@
   import ScrollStory from "$lib/shared/ScrollStory/index.svelte";
   import AItoHtml from "$lib/shared/AitoHtml/index.svelte";
   import "./app.css";
+  import { onMount } from "svelte";
+
+  const url =
+    "https://asset.wsj.net/wsjnewsgraphics/projects/archibald/1jhZ8PxcygA3YCPJYv1r1oJE-2i_z_Y-XnWEQgebAWZg-dev.json";
+
+  let mounted = false;
+  let loading = false;
+  export let data;
+  let items = [];
+
+  onMount(async () => {
+    const response = await fetch(url);
+    data = await response.json();
+    mounted = true;
+    items = data.slides;
+
+    setTimeout(() => {
+      loading = true;
+    }, 500); // Adjust the delay as necessary
+  });
+
+  $: console.log(data);
 
   let activeIndex = 0;
-  let items = [
-    {
-      id: "slide-1",
-      text: "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Proin accumsan.",
-    },
-    {
-      id: "slide-2",
-      text: "Vivamus luctus urna sed urna ultricies ac tempor dui sagittis.",
-    },
-    {
-      id: "slide-3",
-      text: "In condimentum facilisis porta. Sed nec diam eu diam mattis viverra.",
-    },
-    {
-      id: "slide-4",
-      text: "In condimentum facilisis porta. Sed nec diam eu diam mattis viverra.",
-    },
-    {
-      id: "slide-5",
-      text: "In condimentum facilisis porta. Sed nec diam eu diam mattis viverra.",
-    },
-    {
-      id: "slide-6",
-      text: "In condimentum facilisis porta. Sed nec diam eu diam mattis viverra.",
-    },
-  ];
 
   const jsonUrls = [
     "https://www.wsj.com/ai2html/fb2465a6-3c32-40ec-b5d4-4bc2f7488d00/inset.json",
@@ -45,19 +41,21 @@
   }
 </script>
 
-<div class="container">
-  <AItoHtml {jsonUrls} {activeIndex} />
+{#if mounted}
+  <div class="container">
+    <AItoHtml {jsonUrls} {activeIndex} />
 
-  <!-- ScrollStory -->
-  <div class="scroll-content">
-    <ScrollStory
-      {items}
-      on:indexchange={handleIndexChange}
-      threshold={0.75}
-      itemSpacing="70vh"
-    />
+    <!-- ScrollStory -->
+    <div class="scroll-content">
+      <ScrollStory
+        {items}
+        on:indexchange={handleIndexChange}
+        threshold={0.75}
+        itemSpacing="70vh"
+      />
+    </div>
   </div>
-</div>
+{/if}
 
 <style>
   .scroll-content {

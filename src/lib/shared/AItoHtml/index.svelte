@@ -105,7 +105,10 @@
   });
 
   function prepareHtmlBlock(htmlBlock) {
-    return htmlBlock.replace(/data-src/g, "src");
+    return htmlBlock.replace(
+      /<img([^>]+)(data-src="([^"]+)")/g,
+      '<img$1src="$3" loading="eager">'
+    );
   }
 </script>
 
@@ -155,5 +158,4 @@
     pointer-events: none;
     z-index: 1;
   }
-
 </style>
