@@ -38,6 +38,8 @@
   /* named width */
   --g-width-body: 620px;
   --g-width-wide: 1050px;
+
+  --g-body-font-size: 1.15rem;
 }
 
 .container {
@@ -382,10 +384,13 @@ a:hover {
 
 .g-text {
   background: white;
-  border: 2px solid black;
+  /* border: 2px solid black; */
   z-index: 1;
   padding: 1rem !important;
   font-family: var(--font-heading) !important;
+  font-size: var(--g-body-font-size);
+  line-height: var(--line-height-base) !important;
+  color: #222222 !important;
 }
 
 .g-aiAbs {

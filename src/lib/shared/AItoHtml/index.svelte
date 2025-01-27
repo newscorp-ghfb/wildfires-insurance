@@ -212,7 +212,6 @@
     z-index: 1;
   }
 
-  /* Estilo para el siguiente board */
   .next-board {
     display: none;
   }
