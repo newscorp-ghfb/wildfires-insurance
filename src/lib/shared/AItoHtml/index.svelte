@@ -6,8 +6,11 @@
 
   let boardsBySlide = [];
   let currentBoard = null;
+  let nextBoard = null;
+  let nextBoardElement = null;
   let isInitialized = false;
   let isVisible = false;
+  let isNextBoardLoaded = false;
 
   async function fetchBoards() {
     try {
@@ -57,9 +60,26 @@
             : true)
       ) || null;
 
+    updateNextBoard();
     isInitialized = true;
     isVisible = true;
     console.log("Initialized current board:", currentBoard);
+  }
+
+  function updateNextBoard() {
+    const width = window.innerWidth;
+    const boards = boardsBySlide[activeIndex + 1] || [];
+
+    nextBoard =
+      boards.find(
+        (board) =>
+          width >= parseInt(board.rawAttributes["data-min-width"] || "0") &&
+          (board.rawAttributes["data-max-width"]
+            ? width <= parseInt(board.rawAttributes["data-max-width"])
+            : true)
+      ) || null;
+
+    console.log("Next board updated:", nextBoard);
   }
 
   async function updateCurrentBoard() {
@@ -80,11 +100,11 @@
 
     isVisible = false;
 
-    await new Promise((resolve) => setTimeout(resolve, 300));
+    await new Promise((resolve) => setTimeout(resolve, 100));
 
     currentBoard = newBoard;
-
     isVisible = true;
+    updateNextBoard();
   }
 
   $: {
@@ -107,6 +127,30 @@
   function prepareHtmlBlock(htmlBlock) {
     return htmlBlock.replace(/data-src/g, "src");
   }
+
+  function checkImagesLoaded() {
+    const images = document.querySelectorAll(`#g-market_cap-box img`);
+    let loaded = 0;
+
+    images.forEach((img) => {
+      if (img.complete) {
+        loaded++;
+      } else {
+        img.onload = () => {
+          loaded++;
+          if (loaded === images.length) {
+            isNextBoardLoaded = true;
+            isVisible = true;
+          }
+        };
+      }
+    });
+
+    if (images.length === 0) {
+      isNextBoardLoaded = true;
+      isVisible = true;
+    }
+  }
 </script>
 
 <div class="background-container">
@@ -118,6 +162,18 @@
     >
       {@html prepareHtmlBlock(currentBoard?.htmlBlock || "")}
     </div>
+
+    {#if nextBoard}
+      <div
+        id="next-board"
+        class="next-board"
+        style="display: none;"
+        bind:this={nextBoardElement}
+        on:load={checkImagesLoaded}
+      >
+        {@html prepareHtmlBlock(nextBoard?.htmlBlock || "")}
+      </div>
+    {/if}
   {/if}
 </div>
 
@@ -140,7 +196,7 @@
     width: 100%;
     opacity: 0;
     pointer-events: none;
-    transition: opacity 0.3s ease-out;
+    transition: opacity 0.1s ease-out;
     z-index: 1;
   }
 
@@ -156,4 +212,8 @@
     z-index: 1;
   }
 
+  /* Estilo para el siguiente board */
+  .next-board {
+    display: none;
+  }
 </style>
