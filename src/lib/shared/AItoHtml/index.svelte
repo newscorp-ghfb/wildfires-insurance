@@ -1,5 +1,5 @@
 <script>
-  import { onMount } from "svelte";
+  import { onMount, afterUpdate } from "svelte";
 
   export let jsonUrls = [];
   export let activeIndex = 0;
@@ -8,6 +8,9 @@
   let selectedBoards = [];
   let visibleSlides = [];
   let oldIndex = -1;
+  let boardRefs = [];
+
+  let maxHeight = 0;
 
   onMount(() => {
     fetchBoards();
@@ -90,13 +93,26 @@
   function prepareHtmlBlock(h = "") {
     return h.replace(/data-src/g, "src");
   }
+
+  afterUpdate(() => {
+    maxHeight = Math.max(
+      ...boardRefs.map((ref) => ref?.getBoundingClientRect().height || 0)
+    );
+  });
+
+  function saveRefAt(index) {
+    return (el) => {
+      boardRefs[index] = el;
+    };
+  }
 </script>
 
-<div class="slides-wrapper">
+<div class="slides-wrapper" style="min-height: {maxHeight}px">
   <div class="slides-container">
     {#each selectedBoards as board, i}
       {#if board}
         <div
+          bind:this={boardRefs[i]}
           class="board"
           class:overlap={visibleSlides[i]}
           style="z-index: {getZIndex(i)}"
@@ -110,38 +126,34 @@
 
 <style>
   .slides-wrapper {
-    position: sticky;
-    top: 0;
-    width: 100%;
-    height: 100vh;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-  }
+  position: sticky;
+  top: 20rem;
+  width: 100%;
+  overflow: hidden;
+}
 
-  .slides-container {
-    height: 40%;
-    width: 100%;
-    position: relative;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-  }
+.slides-container {
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+}
 
-  .board {
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 100%;
-    opacity: 0;
-    pointer-events: none;
-    transition: opacity 0.6s ease;
-    display: flex;
-    justify-content: center;
-  }
+.board {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity 0.6s ease;
+  display: flex;
+  justify-content: center;
+}
 
-  .board.overlap {
-    opacity: 1;
-    pointer-events: auto;
-  }
+.board.overlap {
+  opacity: 1;
+  pointer-events: auto;
+}
 </style>
