@@ -5,214 +5,131 @@
   export let activeIndex = 0;
 
   let boardsBySlide = [];
-  let currentBoard = null;
-  let nextBoard = null;
-  let nextBoardElement = null;
-  let isInitialized = false;
-  let isVisible = false;
-  let isNextBoardLoaded = false;
+  let selectedBoards = [];
+  let visibleSlides = [];
+  let oldIndex = -1;
+
+  onMount(() => {
+    fetchBoards();
+    window.addEventListener("resize", updateSelectedBoards);
+    return () => window.removeEventListener("resize", updateSelectedBoards);
+  });
 
   async function fetchBoards() {
     try {
-      console.log("Fetching boards...");
       const results = await Promise.all(
         jsonUrls.map(async (url) => {
-          const response = await fetch(url);
-          const jsonData = await response.json();
-          console.log(`Fetched data from ${url}:`, jsonData);
-
-          if (jsonData.serverside?.data?.data?.styles) {
-            injectStyles(jsonData.serverside.data.data.styles);
+          const r = await fetch(url);
+          const j = await r.json();
+          if (j.serverside?.data?.data?.styles) {
+            injectStyles(j.serverside.data.data.styles);
           }
-
-          return jsonData?.serverside?.data?.data?.boards || [];
+          return j?.serverside?.data?.data?.boards || [];
         })
       );
-
       boardsBySlide = results;
-      console.log("Boards by slide:", boardsBySlide);
-      initializeCurrentBoard();
-    } catch (error) {
-      console.error("Error loading JSON data:", error);
-    }
+      updateSelectedBoards();
+      initVisibleSlides();
+    } catch {}
   }
 
-  function injectStyles(cssString) {
-    if (!cssString || typeof cssString !== "string") return;
-
-    const sanitizedStyles = cssString.replace(/<\/?script[^>]*>/g, "").trim();
-    const styleElement = document.createElement("style");
-    styleElement.type = "text/css";
-    styleElement.textContent = sanitizedStyles;
-    document.head.appendChild(styleElement);
+  function injectStyles(css) {
+    if (!css) return;
+    const cleaned = css.replace(/<\/?script[^>]*>/g, "").trim();
+    const el = document.createElement("style");
+    el.type = "text/css";
+    el.textContent = cleaned;
+    document.head.appendChild(el);
   }
 
-  function initializeCurrentBoard() {
-    const width = window.innerWidth;
-    const boards = boardsBySlide[activeIndex] || [];
-
-    currentBoard =
-      boards.find(
-        (board) =>
-          width >= parseInt(board.rawAttributes["data-min-width"] || "0") &&
-          (board.rawAttributes["data-max-width"]
-            ? width <= parseInt(board.rawAttributes["data-max-width"])
-            : true)
-      ) || null;
-
-    updateNextBoard();
-    isInitialized = true;
-    isVisible = true;
-    console.log("Initialized current board:", currentBoard);
-  }
-
-  function updateNextBoard() {
-    const width = window.innerWidth;
-    const boards = boardsBySlide[activeIndex + 1] || [];
-
-    nextBoard =
-      boards.find(
-        (board) =>
-          width >= parseInt(board.rawAttributes["data-min-width"] || "0") &&
-          (board.rawAttributes["data-max-width"]
-            ? width <= parseInt(board.rawAttributes["data-max-width"])
-            : true)
-      ) || null;
-
-    console.log("Next board updated:", nextBoard);
-  }
-
-  async function updateCurrentBoard() {
-    if (!boardsBySlide.length || !isInitialized) return;
-
-    const width = window.innerWidth;
-    const boards = boardsBySlide[activeIndex] || [];
-    const newBoard =
-      boards.find(
-        (board) =>
-          width >= parseInt(board.rawAttributes["data-min-width"] || "0") &&
-          (board.rawAttributes["data-max-width"]
-            ? width <= parseInt(board.rawAttributes["data-max-width"])
-            : true)
-      ) || null;
-
-    if (JSON.stringify(newBoard) === JSON.stringify(currentBoard)) return;
-
-    isVisible = false;
-
-    await new Promise((resolve) => setTimeout(resolve, 100));
-
-    currentBoard = newBoard;
-    isVisible = true;
-    updateNextBoard();
-  }
-
-  $: {
-    if (boardsBySlide.length > 0 && isInitialized) {
-      console.log("Active index changed:", activeIndex);
-      updateCurrentBoard();
-    }
-  }
-
-  onMount(() => {
-    console.log("Component mounted, starting fetchBoards...");
-    fetchBoards();
-    window.addEventListener("resize", updateCurrentBoard);
-    return () => {
-      console.log("Component unmounted, cleaning up...");
-      window.removeEventListener("resize", updateCurrentBoard);
-    };
-  });
-
-  function prepareHtmlBlock(htmlBlock) {
-    return htmlBlock.replace(/data-src/g, "src");
-  }
-
-  function checkImagesLoaded() {
-    const images = document.querySelectorAll(`#g-market_cap-box img`);
-    let loaded = 0;
-
-    images.forEach((img) => {
-      if (img.complete) {
-        loaded++;
-      } else {
-        img.onload = () => {
-          loaded++;
-          if (loaded === images.length) {
-            isNextBoardLoaded = true;
-            isVisible = true;
-          }
-        };
-      }
+  function updateSelectedBoards() {
+    const w = window.innerWidth;
+    selectedBoards = boardsBySlide.map((arr) => {
+      return (
+        arr.find(
+          (b) =>
+            w >= parseInt(b.rawAttributes["data-min-width"] || "0") &&
+            (b.rawAttributes["data-max-width"]
+              ? w <= parseInt(b.rawAttributes["data-max-width"])
+              : true)
+        ) || null
+      );
     });
+  }
 
-    if (images.length === 0) {
-      isNextBoardLoaded = true;
-      isVisible = true;
+  function initVisibleSlides() {
+    visibleSlides = selectedBoards.map((_, i) => i === activeIndex);
+    oldIndex = activeIndex;
+  }
+
+  $: if (selectedBoards.length && visibleSlides.length) {
+    if (activeIndex !== oldIndex) {
+      doOverlapTransition(oldIndex, activeIndex);
+      oldIndex = activeIndex;
     }
+  }
+
+  function doOverlapTransition(prev, next) {
+    if (next >= 0) {
+      visibleSlides[next] = true;
+    }
+    if (prev >= 0 && prev !== next) {
+      setTimeout(() => {
+        visibleSlides[prev] = false;
+      }, 600);
+    }
+  }
+
+  function getZIndex(i) {
+    if (i === oldIndex && oldIndex > activeIndex) {
+      return 3;
+    }
+    return visibleSlides[i] ? 2 : 1;
+  }
+
+  function prepareHtmlBlock(h = "") {
+    return h.replace(/data-src/g, "src");
   }
 </script>
 
-<div class="background-container">
-  {#if isInitialized && currentBoard}
-    <div
-      id="g-market_cap-box"
-      class:is-visible={isVisible}
-      class:is-hidden={!isVisible}
-    >
-      {@html prepareHtmlBlock(currentBoard?.htmlBlock || "")}
-    </div>
-
-    {#if nextBoard}
+<div class="slides-wrapper">
+  {#each selectedBoards as board, i}
+    {#if board}
       <div
-        id="next-board"
-        class="next-board"
-        style="display: none;"
-        bind:this={nextBoardElement}
-        on:load={checkImagesLoaded}
+        class="board"
+        class:overlap={visibleSlides[i]}
+        style="z-index: {getZIndex(i)}"
       >
-        {@html prepareHtmlBlock(nextBoard?.htmlBlock || "")}
+        {@html prepareHtmlBlock(board.htmlBlock)}
       </div>
     {/if}
-  {/if}
+  {/each}
 </div>
 
 <style>
-  .background-container {
+  .slides-wrapper {
     position: sticky;
-    top: 0%;
+    top: 25%;
     width: 100%;
-    min-height: 100vh;
-    height: auto;
     display: flex;
     align-items: center;
     justify-content: center;
   }
 
-  #g-market_cap-box {
-    position: sticky;
+  .board {
+    position: absolute;
     top: 0;
     left: 0;
     width: 100%;
     opacity: 0;
     pointer-events: none;
-    transition: opacity 0.1s ease-out;
-    z-index: 1;
+    transition: opacity 0.6s ease;
+    display: flex;
+    justify-content: center;
   }
 
-  #g-market_cap-box.is-visible {
+  .board.overlap {
     opacity: 1;
     pointer-events: auto;
-    z-index: 2;
-  }
-
-  #g-market_cap-box.is-hidden {
-    opacity: 0;
-    pointer-events: none;
-    z-index: 1;
-  }
-
-  .next-board {
-    display: none;
   }
 </style>

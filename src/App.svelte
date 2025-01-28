@@ -51,6 +51,7 @@
         {items}
         on:indexchange={handleIndexChange}
         threshold={0.75}
+        textStartPosition="70rem"
         itemSpacing="70vh"
       />
     </div>
