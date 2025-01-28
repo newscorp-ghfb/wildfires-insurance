@@ -229,7 +229,7 @@ module.exports = {
       ? './client.js'
       : './index.js',
   output: {
-    path: path.resolve(__dirname, 'dist'),
+    path: path.resolve(__dirname, 'src/dist'),
     iife: true,
   },
   resolve,

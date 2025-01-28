@@ -93,27 +93,39 @@
 </script>
 
 <div class="slides-wrapper">
-  {#each selectedBoards as board, i}
-    {#if board}
-      <div
-        class="board"
-        class:overlap={visibleSlides[i]}
-        style="z-index: {getZIndex(i)}"
-      >
-        {@html prepareHtmlBlock(board.htmlBlock)}
-      </div>
-    {/if}
-  {/each}
+  <div class="slides-container">
+    {#each selectedBoards as board, i}
+      {#if board}
+        <div
+          class="board"
+          class:overlap={visibleSlides[i]}
+          style="z-index: {getZIndex(i)}"
+        >
+          {@html prepareHtmlBlock(board.htmlBlock)}
+        </div>
+      {/if}
+    {/each}
+  </div>
 </div>
 
 <style>
   .slides-wrapper {
     position: sticky;
-    top: 25%;
+    top: 0;
     width: 100%;
+    height: 100vh;
     display: flex;
     align-items: center;
     justify-content: center;
+  }
+
+  .slides-container {
+    height: 40%;
+    width: 100%;
+    position: relative;
+    display: flex;
+    justify-content: center;
+    align-items: center;
   }
 
   .board {

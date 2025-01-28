@@ -6,12 +6,12 @@ const kleur = require('kleur');
 const { execSync } = require('child_process');
 const sizeOf = require('image-size');
 const generateFallbackData = require('./fallbackTemplate');
-const generateCapiData = require('../src/capi');
+const generateCapiData = require('../capi');
 
 let config;
 
 try {
-  config = require('../config.json');
+  config = require('../../config.json');
 } catch (error) {
   console.log(kleur.italic().yellow(`Looks like you're missing your config.json`));
   console.log(kleur.red(`Exiting deployment.`));
@@ -85,7 +85,7 @@ async function attachFallbackImage(destination) {
   const url = config.fallbackImage;
   const image = await request.get(url).responseType('arraybuffer');
   const dimensions = sizeOf(image.body);
-  const file = path.resolve(__dirname, '../dist/inset.json');
+const file = path.resolve(__dirname, '../dist/inset.json');
   const inset = JSON.parse(fs.readFileSync(file, 'utf8'));
   inset.alt = generateFallbackData(url, dimensions, destination);
 
