@@ -126,34 +126,34 @@
 
 <style>
   .slides-wrapper {
-  position: sticky;
-  top: 20rem;
-  width: 100%;
-  overflow: hidden;
-}
+    position: sticky;
+    top: 20vh;
+    width: 100%;
+    overflow: hidden;
+  }
 
-.slides-container {
-  position: relative;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  width: 100%;
-}
+  .slides-container {
+    position: relative;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+  }
 
-.board {
-  position: absolute;
-  top: 0;
-  left: 0;
-  width: 100%;
-  opacity: 0;
-  pointer-events: none;
-  transition: opacity 0.6s ease;
-  display: flex;
-  justify-content: center;
-}
+  .board {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    opacity: 0;
+    pointer-events: none;
+    transition: opacity 0.6s ease;
+    display: flex;
+    justify-content: center;
+  }
 
-.board.overlap {
-  opacity: 1;
-  pointer-events: auto;
-}
+  .board.overlap {
+    opacity: 1;
+    pointer-events: auto;
+  }
 </style>
