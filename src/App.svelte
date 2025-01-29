@@ -23,14 +23,13 @@
     }, 500); // Adjust the delay as necessary
   });
 
-  $: console.log(data);
+  // $: console.log(data);
 
   let activeIndex = 0;
 
   const jsonUrls = [
     "https://www.wsj.com/ai2html/fb2465a6-3c32-40ec-b5d4-4bc2f7488d00/inset.json",
     "https://www.wsj.com/ai2html/d308ed39-2859-41b6-a544-070a4ddd3afb/inset.json",
-    "https://www.wsj.com/ai2html/b24d6a7e-8905-43b0-809b-3dfc8bd8c47d/inset.json",
     "https://www.wsj.com/ai2html/57366dbb-21e7-427c-8318-73cc732b962a/inset.json",
     "https://www.wsj.com/ai2html/3a4bd1f0-7b0f-40b3-ac7b-afc390cbc186/inset.json",
     "https://www.wsj.com/ai2html/59ba318e-6d9e-4d60-a484-34556d83ff87/inset.json",
@@ -50,9 +49,9 @@
       <ScrollStory
         {items}
         on:indexchange={handleIndexChange}
-        threshold={0.75}
-        textStartPosition="70rem"
-        itemSpacing="70vh"
+        threshold={0.85}
+        textStartPosition="15rem"
+        itemSpacing="100vh"
       />
     </div>
   </div>
