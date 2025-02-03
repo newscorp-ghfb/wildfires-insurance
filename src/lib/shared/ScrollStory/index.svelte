@@ -259,15 +259,15 @@
   };
 
   const onActiveIndexChange = () => {
-    console.log(
-      "onActiveIndexChange",
-      "scrollindex",
-      scrollIndex,
-      "activeItemOffset",
-      activeItemOffset,
-      "activeIndex",
-      activeIndex,
-    );
+    // console.log(
+    //   "onActiveIndexChange",
+    //   "scrollindex",
+    //   scrollIndex,
+    //   "activeItemOffset",
+    //   activeItemOffset,
+    //   "activeIndex",
+    //   activeIndex,
+    // );
     if (enabled && items.length) {
       activeIndex = scrollIndex;
 

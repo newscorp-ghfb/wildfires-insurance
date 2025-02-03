@@ -417,3 +417,13 @@ a:hover {
 .g-aiImg {
   max-width: 100%;
 }
+
+@media (max-width: 767px) {
+  .g-artboard {
+    height: 100% !important;
+  }
+
+  .g-aiPointText p {
+    line-height: 9px !important;
+  }
+}
