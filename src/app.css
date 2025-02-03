@@ -386,7 +386,6 @@ a:hover {
    CUSTOM STYLES
 ------------------------------------- */
 
-
 .slides-wrapper p {
   margin: 0 !important;
 }
@@ -399,7 +398,6 @@ a:hover {
   font-family: var(--font-body), Helvetica, Arial, sans-serif !important;
   position: absolute;
 }
-
 
 #g-market_cap-_620px {
   overflow: unset !important;
@@ -415,16 +413,11 @@ a:hover {
   color: #222222 !important;
 }
 
-
 .slides-wrapper .g-aiImg {
   max-width: 100%;
 }
 
 @media (max-width: 767px) {
-  .slides-wrapper .g-artboard {
-    height: 100% !important;
-  }
-
   .slides-wrapper .g-aiPointText p {
     line-height: 9px !important;
   }
