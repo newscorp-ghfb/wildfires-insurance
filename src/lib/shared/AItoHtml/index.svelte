@@ -79,7 +79,7 @@
     if (prev >= 0 && prev !== next) {
       setTimeout(() => {
         visibleSlides[prev] = false;
-      }, 200);
+      }, 300);
     }
   }
 
@@ -147,7 +147,7 @@
     width: 100%;
     opacity: 0;
     pointer-events: none;
-    transition: opacity 0.2s ease;
+    transition: opacity 0.3s ease;
     display: flex;
     justify-content: center;
   }
