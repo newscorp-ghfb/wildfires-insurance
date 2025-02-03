@@ -62,10 +62,6 @@ a:hover {
   text-decoration: underline;
 }
 
-.slides-wrapper p {
-  margin: 0 !important;
-}
-
 .g-wildfire-text {
   color: #d100e2;
   font-weight: bold;
@@ -390,22 +386,12 @@ a:hover {
    CUSTOM STYLES
 ------------------------------------- */
 
-#g-market_cap-_620px {
-  overflow: unset !important;
+
+.slides-wrapper p {
+  margin: 0 !important;
 }
 
-.g-text {
-  background: white;
-  /* border: 2px solid black; */
-  z-index: 1;
-  padding: 1rem !important;
-  font-family: var(--font-heading) !important;
-  font-size: var(--g-body-font-size);
-  line-height: var(--line-height-base) !important;
-  color: #222222 !important;
-}
-
-.g-aiAbs {
+.slides-wrapper .g-aiAbs {
   background: transparent;
   border: 0 !important;
   z-index: 0 !important;
@@ -414,16 +400,32 @@ a:hover {
   position: absolute;
 }
 
-.g-aiImg {
+
+#g-market_cap-_620px {
+  overflow: unset !important;
+}
+
+.slides-wrapper .g-text {
+  background: white;
+  z-index: 1;
+  padding: 1rem !important;
+  font-family: var(--font-heading) !important;
+  font-size: var(--g-body-font-size);
+  line-height: var(--line-height-base) !important;
+  color: #222222 !important;
+}
+
+
+.slides-wrapper .g-aiImg {
   max-width: 100%;
 }
 
 @media (max-width: 767px) {
-  .g-artboard {
+  .slides-wrapper .g-artboard {
     height: 100% !important;
   }
 
-  .g-aiPointText p {
+  .slides-wrapper .g-aiPointText p {
     line-height: 9px !important;
   }
 }
